@@ -1,23 +1,100 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Prototype 2</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/prototype2.css">
+    <link rel="stylesheet" href="css/Twitter2020.css">
   </head>
   <body>
 
     <div class="container">
-      <p>This is a second page.</p>
+      <input type="text" id="twNameF" name="name" value="" placeholder="Twitter Name">
+      <button class="btn btn-primary" onclick="changeName()" type="button" name="button">Change</button>
+
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+
+    <div class="container">
+      <form>
+        <div class="form-row align-items-center">
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Username</label>
+            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Twitter Name">
+          </div>
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Handle</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Twitter Handle">
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+              <label class="form-check-label" for="autoSizingCheck">
+                Verified
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="displayMode" id="display1" value="simple">
+          <label class="form-check-label" for="display1">Simple Mode</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="displayMode" id="display2" value="day">
+          <label class="form-check-label" for="display2">Day Mode</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="displayMode" id="display3" value="night">
+          <label class="form-check-label" for="display4">Night Mode</label>
+        </div>
+      </form>
+    </div>
+
+    <div class="container" id="demonstration">
+    <div class="tw twBody">
+      <div class="twUser"><!---
+        ---><img class="twAvatar" src="https://images2.imgbox.com/68/f6/3IaTRbkQ_o.png"><!---
+        ---><span><span class="twName">Euphy</span><span class="twVerified">✔</span><br/><!---
+        ---><span class="twHandle">@officialeuphemia</span></span><!---
+    ---></div>
+        <div class="twText">met a really nice guy out in Area 11 and he has a cat named Arthur!! <span>#instantcrush</span></div>
+        <div class="twStats"><!---
+        --->❤ 1.2M<span class="twTime"> 6:06 PM - August 12, 2017</span></div>
+        <div class="twComments ">32.2K people are talking about this</div>
+    </div>
+    </div>
+
+    <div class="container pt-3">
+      <p>
+        <button class="btn btn-primary" type="button" onclick="generateCode()" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="HTMLBox CSSBox">
+          Generate HTML
+        </button>
+      </p>
+
+    <div class="collapse multi-collapse genCode">
+      <button class="btn btn-primary btn-sm d-block" type="button" data-clipboard-target="#HTMLCode">Copy to your fic</button>
+      <textarea readonly class="d-block my-2 copyable" id="HTMLCode">Dummy Text</textarea>
+    </div>
+
+    </div>
+
+    <!--- Optional Scripts --->
+    <script src="js/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/prototype2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
   </body>
 </html>

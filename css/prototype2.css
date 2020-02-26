@@ -1,0 +1,12 @@
+.copyable {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  font-family: monospace;
+}
+
+#demonstration {
+  font-size: 14px;
+  font-family: 'Lucida-Grande', 'Lucida Sans Unicode', sans-serif;
+  margin-top: 1em;
+}
