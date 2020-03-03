@@ -10,83 +10,259 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/prototype2.css">
     <link rel="stylesheet" href="css/Twitter2020.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
-  <body>
+  <body class="siteNM">
 
-    <div class="container">
-      <input type="text" id="twNameF" name="name" value="" placeholder="Twitter Name">
-      <button class="btn btn-primary" onclick="changeName()" type="button" name="button">Change</button>
+    <!--- Side navigation Form --->
+    <div id="mySidenav" class="sidenav">
+      <button class="closebtn settingsbtn" onclick="closeNav()"><i class="material-icons md-48 md-light">close</i></button>
 
-    </div>
-
-
-    <div class="container">
-      <form>
-        <div class="form-row align-items-center">
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Username</label>
-            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Twitter Name">
+      <div class="accordion" id="settingAccordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                General
+              </button>
+            </h2>
           </div>
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Handle</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#settingAccordion">
+            <div class="card-body">
+              <!--- Day/Night/Simple Mode --->
+              <form>
+                <!--- Enable/Disable Dummy Text --->
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="hideDummyText" onclick="hideDummy()">
+                    <label class="form-check-label" for="hideDummyText">Hide dummy text</label>
+                  </div>
+                </div>
+                <!--- Tweet Apperance --->
+                <fieldset>
+                  <legend>Tweet Appearance</legend>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="twMode" id="twMode1" value="option1" checked>
+                    <label class="form-check-label" for="twMode1">
+                      Day Mode
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="twMode" id="twMode2" value="option2">
+                    <label class="form-check-label" for="twMode2">
+                      Night Mode
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="twMode" id="twMode3" value="option3">
+                    <label class="form-check-label" for="twMode3">
+                      Simple Mode
+                    </label>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Header
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#settingAccordion">
+            <div class="card-body">
+            <form>
+              <!--- Hide Element --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="hideHeader">
+                  <label class="form-check-label" for="hideHeader">Hide header</label>
+                </div>
               </div>
-              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Twitter Handle">
+              <!--- Avatar --->
+              <div class="form-group">
+                <label for="inputAvatar">Avatar URL</label>
+                <input class="form-control" type="url" id="inputAvatar">
+              </div>
+              <!--- Username and Handle--->
+              <div class="form-group">
+                <label for="inputName">Twitter Name</label>
+                <input class="form-control" type="text" id="inputName">
+              </div>
+              <div class="form-group">
+                <label for="inputHandle">Twitter Handle</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input type="text" class="form-control" id="inputHandle">
+                </div>
+              </div>
+              <!--- Verified Icon --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="inputVerified">
+                  <label class="form-check-label" for="inputVerified">Verified Account</label>
+                </div>
+              </div>
+            </form>
             </div>
           </div>
-          <div class="col-auto">
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-              <label class="form-check-label" for="autoSizingCheck">
-                Verified
-              </label>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Content
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#settingAccordion">
+            <div class="card-body">
+              <!--- Show Replying Tag --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="showReplying">
+                  <label class="form-check-label" for="showReplying">Show replying tag</label>
+                </div>
+              </div>
+              <!--- Source Name --->
+              <div class="form-group">
+                <label for="inputName">Handle being replied to</label>
+                <input class="form-control" type="text" id="inputReplyHandle">
+              </div>
+              <!--- Text --->
+              <div class="form-group">
+                <label for="inputTweet">Text</label>
+                <textarea class="form-control" type="text" id="inputText"></textarea>
+              </div>
+              <!--- Icon tray to add picture/poll/quote retweet --->
+              <div class="form-inline">
+                <input type="checkbox" name="addMedia" class="addMedia" value="photo"> Photo
+                <input type="checkbox" name="addMedia" class="addMedia" value="quote"> Quote
+                <input type="checkbox" name="addMedia" class="addMedia" value="poll"> Poll
+              </div>
+
+              <!--- Add Picture URL --->
+
+              <!--- Add Quote Retweet --->
+
+              <!--- Add Poll --->
+
             </div>
           </div>
         </div>
-      </form>
-      <form>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="displayMode" id="display1" value="simple">
-          <label class="form-check-label" for="display1">Simple Mode</label>
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Footer
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#settingAccordion">
+            <div class="card-body">
+              <!--- Hide Footer --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="hideFooter">
+                  <label class="form-check-label" for="hideFooter">Hide footer</label>
+                </div>
+              </div>
+              <!--- Number of Likes --->
+              <div class="form-group">
+                <label for="inputName">Number of Likes</label>
+                <div class="form-inline">
+                  <input class="form-control" type="number" id="inputLikesCt">
+                  <!-- TODO: Fix button format -->
+                  <div class="btn-group-toggle mx-2" data-toggle="buttons">
+                    <label class="btn btn-outline-white">
+                      <input type="checkbox" autocomplete="off"> K
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!--- Date and Time --->
+              <div class="form-group">
+                <label for="inputName">Date of Post</label>
+                <input class="form-control" type="datetime-local" id="inputDate">
+              </div>
+              <!--- Hide Reply Count --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="hideReplies">
+                  <label class="form-check-label" for="hideReplies">Hide replies</label>
+                </div>
+              </div>
+              <!--- Number of Replies --->
+              <div class="form-group">
+                <label for="inputName">Number of Replies</label>
+                <input class="form-control" type="number" id="inputReplyCt">
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="displayMode" id="display2" value="day">
-          <label class="form-check-label" for="display2">Day Mode</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="displayMode" id="display3" value="night">
-          <label class="form-check-label" for="display4">Night Mode</label>
-        </div>
-      </form>
+      </div>
     </div>
 
-    <div class="container" id="demonstration">
-    <div class="tw twBody">
-      <div class="twUser"><!---
-        ---><img class="twAvatar" src="https://images2.imgbox.com/68/f6/3IaTRbkQ_o.png"><!---
-        ---><span><span class="twName">Euphy</span><span class="twVerified">✔</span><br/><!---
-        ---><span class="twHandle">@officialeuphemia</span></span><!---
-    ---></div>
-        <div class="twText">met a really nice guy out in Area 11 and he has a cat named Arthur!! <span>#instantcrush</span></div>
-        <div class="twStats"><!---
-        --->❤ 1.2M<span class="twTime"> 6:06 PM - August 12, 2017</span></div>
-        <div class="twComments ">32.2K people are talking about this</div>
-    </div>
+    <!--- Opens sidenav form for settings --->
+    <div class="container pt-4">
+      <button class="settingsbtn" onclick="openNav()">
+        <i class="material-icons md-48 ao3_red">settings</i>
+      </button>
+
+      <button class="settingsbtn NMbutton" onclick="toggleSiteNM()">
+        <i class="material-icons md-48 ao3_red">brightness_4</i>
+      </button>
     </div>
 
-    <div class="container pt-3">
-      <p>
-        <button class="btn btn-primary" type="button" onclick="generateCode()" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="HTMLBox CSSBox">
-          Generate HTML
-        </button>
-      </p>
+    <!-- Main body text--->
+    <div id="main">
+      <!--- Dummy Text above Tweet--->
+      <h2 class="dummyHeader">Ao3 Tweet Skin Builder</h2>
+      <h3 class="dummyHeader">by gadaursan</h3>
+      <div class="container my-4 dummyText collapse show">
+        <p>(The following text is an excerpt from Pride & Prejudice, for testing purposes)</p>
+        <p>“I do not know when I have been more shocked,” said she. “Wickham so very bad! It is almost past belief. And poor Mr. Darcy! Dear Lizzy, only consider what he must have suffered. Such a disappointment! and with the knowledge of your ill opinion, too! and having to relate such a thing of his sister! It is really too distressing. I am sure you must feel it so.”</p>
+        <p>It was some time, however, before a smile could be extorted from Jane.</p>
+      </div>
 
-    <div class="collapse multi-collapse genCode">
-      <button class="btn btn-primary btn-sm d-block" type="button" data-clipboard-target="#HTMLCode">Copy to your fic</button>
-      <textarea readonly class="d-block my-2 copyable" id="HTMLCode">Dummy Text</textarea>
-    </div>
+      <!--- Floor model demonstration of Tweet --->
+      <div id="demonstration">
+        <div class="tw twBody">
+          <div class="twUser"><!---
+            ---><img class="twAvatar" src="https://images2.imgbox.com/68/f6/3IaTRbkQ_o.png"><!---
+            ---><span><span class="twName">Euphy</span><span class="twVerified">✔</span><br/><!---
+            ---><span class="twHandle">@officialeuphemia</span></span><!---
+        ---></div>
+            <div class="twText">met a really nice guy out in Area 11 and he has a cat named Arthur!! <span>#instantcrush</span></div>
+            <div class="twStats"><!---
+            --->❤ 1.2M<span class="twTime"> 6:06 PM - August 12, 2017</span></div>
+            <div class="twComments ">32.2K people are talking about this</div>
+        </div>
+      </div>
+      <!--- Dummy text below Tweet --->
+      <div class="container my-4 dummyText collapse show">
+        <p>“Oh! no, my regret and compassion are all done away by seeing you so full of both. I know you will do him such ample justice, that I am growing every moment more unconcerned and indifferent. Your profusion makes me saving; and if you lament over him much longer, my heart will be as light as a feather.”</p>
+        <p>“Poor Wickham! there is such an expression of goodness in his countenance! such an openness and gentleness in his manner!”</p>
+        <p>“There certainly was some great mismanagement in the education of those two young men. One has got all the goodness, and the other all the appearance of it.”</p>
+      </div>
+      <!--- Button to generate code --->
+      <div class="genCode0">
+        <p>
+          <button class="btn btn-primary bg-dark" type="button" onclick="generateCode()" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="HTMLBox CSSBox">
+            Generate HTML
+          </button>
+        </p>
+        <!--- Appears only when code needs to be generated --->
+        <div class="collapse multi-collapse genCode">
+          <button class="btn btn-primary btn-sm d-block bg-dark" type="button" data-clipboard-target="#HTMLCode">Copy to your fic</button>
+          <textarea readonly class="d-block my-2 copyable" id="HTMLCode">Dummy Text</textarea>
+        </div>
+      </div>
 
     </div>
 

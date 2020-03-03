@@ -8,16 +8,191 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/prototype2.css">
+    <link rel="stylesheet" href="css/prototype3.css">
     <link rel="stylesheet" href="css/Twitter2020.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
+    <div id="mySidenav" class="sidenav">
+      <button class="closebtn settingsbtn" onclick="closeNav()"><i class="material-icons md-48 md-light">close</i></button>
 
+      <div class="accordion" id="settingAccordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Appearance
+              </button>
+            </h2>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#settingAccordion">
+            <div class="card-body">
+              <!--- Day/Night/Simple Mode --->
+              <form>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                  <label class="form-check-label" for="exampleRadios1">
+                    Day Mode
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                  <label class="form-check-label" for="exampleRadios2">
+                    Night Mode
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                  <label class="form-check-label" for="exampleRadios3">
+                    Simple Mode
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Header
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#settingAccordion">
+            <div class="card-body">
+            <form>
+              <!--- Hide Element --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="hideHeader">
+                  <label class="form-check-label" for="hideHeader">Hide header</label>
+                </div>
+              </div>
+              <!--- Avatar --->
+              <div class="form-group">
+                <label for="inputAvatar">Avatar URL</label>
+                <input class="form-control" type="url" id="inputAvatar">
+              </div>
+              <!--- Username and Handle--->
+              <div class="form-group">
+                <label for="inputName">Twitter Name</label>
+                <input class="form-control" type="text" id="inputName">
+              </div>
+              <div class="form-group">
+                <label for="inputHandle">Twitter Handle</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input type="text" class="form-control" id="inputHandle">
+                </div>
+              </div>
+              <!--- Verified Icon --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="inputVerified">
+                  <label class="form-check-label" for="inputVerified">Verified Account</label>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Content
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#settingAccordion">
+            <div class="card-body">
+              <!--- Show Replying Tag --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="showReplying">
+                  <label class="form-check-label" for="showReplying">Show replying tag</label>
+                </div>
+              </div>
+              <!--- Source Name --->
+              <div class="form-group">
+                <label for="inputName">Handle being replied to</label>
+                <input class="form-control" type="text" id="inputReplyHandle">
+              </div>
+              <!--- Text --->
+              <div class="form-group">
+                <label for="inputTweet">Text</label>
+                <textarea class="form-control" type="text" id="inputText"></textarea>
+              </div>
+              <!--- Add Picture/quote-retweet/poll --->
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Footer
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#settingAccordion">
+            <div class="card-body">
+              <!--- Hide Footer --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="hideFooter">
+                  <label class="form-check-label" for="hideFooter">Hide footer</label>
+                </div>
+              </div>
+              <!--- Number of Likes --->
+              <div class="form-group">
+                <label for="inputName">Number of Likes</label>
+                <input class="form-control" type="number" id="inputLikesCt">
+              </div>
+              <!--- Date and Time --->
+              <div class="form-group">
+                <label for="inputName">Date of Post</label>
+                <input class="form-control" type="datetime-local" id="inputDate">
+              </div>
+              <!--- Hide Reply Count --->
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="hideReplies">
+                  <label class="form-check-label" for="hideReplies">Hide replies</label>
+                </div>
+              </div>
+              <!--- Number of Replies --->
+              <div class="form-group">
+                <label for="inputName">Number of Replies</label>
+                <input class="form-control" type="number" id="inputReplyCt">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="container pt-4 main_page">
+
+    <!-- Use any element to open the sidenav -->
+    <button class="settingsbtn" onclick="openNav()">
+      <i class="material-icons md-48 ao3_red">settings</i>
+    </button>
+
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+    <div id="main">
+      "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+    </div>
+
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/prototype3.js"></script>
   </body>
 </html>
