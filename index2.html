@@ -42,19 +42,19 @@
                 <fieldset>
                   <legend>Tweet Appearance</legend>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="twMode" id="twMode1" value="option1" checked>
+                    <input class="form-check-input" type="radio" name="twMode" id="twMode1" value="day" checked onclick="editMode()">
                     <label class="form-check-label" for="twMode1">
                       Day Mode
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="twMode" id="twMode2" value="option2">
+                    <input class="form-check-input" type="radio" name="twMode" id="twMode2" value="night" onclick="editMode()">
                     <label class="form-check-label" for="twMode2">
                       Night Mode
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="twMode" id="twMode3" value="option3">
+                    <input class="form-check-input" type="radio" name="twMode" id="twMode3" value="simple" onclick="editMode()">
                     <label class="form-check-label" for="twMode3">
                       Simple Mode
                     </label>
@@ -78,19 +78,19 @@
               <!--- Hide Element --->
               <div class="form-group">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="hideHeader">
+                  <input class="form-check-input" type="checkbox" id="hideHeader" onclick="hideUser()">
                   <label class="form-check-label" for="hideHeader">Hide header</label>
                 </div>
               </div>
               <!--- Avatar --->
               <div class="form-group">
                 <label for="inputAvatar">Avatar URL</label>
-                <input class="form-control" type="url" id="inputAvatar">
+                <input class="form-control" type="url" id="inputAvatar" oninput="buildAvatar()">
               </div>
               <!--- Username and Handle--->
               <div class="form-group">
                 <label for="inputName">Twitter Name</label>
-                <input class="form-control" type="text" id="inputName">
+                <input class="form-control" type="text" id="inputName" maxlength="35" value="twitter name" oninput="buildName()">
               </div>
               <div class="form-group">
                 <label for="inputHandle">Twitter Handle</label>
@@ -98,13 +98,13 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                   </div>
-                  <input type="text" class="form-control" id="inputHandle">
+                  <input type="text" class="form-control" id="inputHandle" maxlength="15" value="twitterhandle" oninput="buildHandle()">
                 </div>
               </div>
               <!--- Verified Icon --->
               <div class="form-group">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="inputVerified">
+                  <input class="form-check-input" type="checkbox" id="inputVerified" onclick="addVerified()" checked>
                   <label class="form-check-label" for="inputVerified">Verified Account</label>
                 </div>
               </div>
@@ -125,32 +125,56 @@
               <!--- Show Replying Tag --->
               <div class="form-group">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="showReplying">
+                  <input class="form-check-input" type="checkbox" id="showReplying" onclick="addReply()">
                   <label class="form-check-label" for="showReplying">Show replying tag</label>
                 </div>
               </div>
-              <!--- Source Name --->
-              <div class="form-group">
-                <label for="inputName">Handle being replied to</label>
-                <input class="form-control" type="text" id="inputReplyHandle">
+              <!--- Replying Tag --->
+              <div class="form-group collapse" aria-expanded="false" id="addReply">
+                <label for="inputReplyHandle">Handle being replied to</label>
+                <input class="form-control" type="text" id="inputReplyHandle" value="replyhandle" maxlength="15" oninput="buildReply()">
               </div>
               <!--- Text --->
               <div class="form-group">
                 <label for="inputTweet">Text</label>
-                <textarea class="form-control" type="text" id="inputText"></textarea>
+                <textarea class="form-control" type="text" id="inputText" maxlength="280"></textarea>
               </div>
               <!--- Icon tray to add picture/poll/quote retweet --->
-              <div class="form-inline">
-                <input type="checkbox" name="addMedia" class="addMedia" value="photo"> Photo
-                <input type="checkbox" name="addMedia" class="addMedia" value="quote"> Quote
-                <input type="checkbox" name="addMedia" class="addMedia" value="poll"> Poll
+              <div class="form-group">
+                <label for="chooseMedia">Add Media (Choose One)</label>
+                <div class="form-inline" id="chooseMedia">
+                  <span class="checkbox">
+                    <input class="checkbox-element" name="addMedia" value="addPhoto" type="checkbox" onclick="addMedia()"/>
+                    <i class="material-icons">insert_photo</i>
+                  </span>
+                    <span class="checkbox">
+                      <input class="checkbox-element" name="addMedia" value="addQuote" type="checkbox" onclick="addMedia()"/>
+                      <i class="material-icons">sms</i>
+                    </span>
+                  <span class="checkbox">
+                    <input class="checkbox-element" name="addMedia" value="addPoll" type="checkbox" onclick="addMedia()"/>
+                    <i class="material-icons">poll</i>
+                  </span>
+                </div>
               </div>
 
               <!--- Add Picture URL --->
+              <div class="collapse" aria-expanded="false" id="addPhoto">
+                <label for="inputImage">Image URL</label>
+                <input class="form-control" type="text" id="inputImage">
+              </div>
 
               <!--- Add Quote Retweet --->
+              <div class="collapse" aria-expanded="false" id="addQuote">
+                <label for="inputSubAvatar">Quoted Avatar URL</label>
+                <input class="form-control" type="text" id="inputSubAvatar">
+              </div>
 
               <!--- Add Poll --->
+              <div class="collapse" aria-expanded="false" id="addPoll">
+                <label for="inputSubAvatar">pol URL</label>
+                <input class="form-control" type="text" id="inputSubAvatar">
+              </div>
 
             </div>
           </div>
@@ -174,33 +198,53 @@
               </div>
               <!--- Number of Likes --->
               <div class="form-group">
-                <label for="inputName">Number of Likes</label>
-                <div class="form-inline">
-                  <input class="form-control" type="number" id="inputLikesCt">
-                  <!-- TODO: Fix button format -->
-                  <div class="btn-group-toggle mx-2" data-toggle="buttons">
-                    <label class="btn btn-outline-white">
-                      <input type="checkbox" autocomplete="off"> K
-                    </label>
+                <label for="inputLikesCt">Number of Likes</label>
+                <div class="form-row">
+                  <div class="col-auto">
+                    <input class="form-control" type="number" min="0" id="inputLikesCt">
+                  </div>
+                  <div class="col-auto">
+                    <span class="checkbox metric">
+                      <input class="checkbox-element" name="addLikesMetric" value="K" type="checkbox" onclick="toggleStats()"/>
+                      <p>K</p>
+                    </span>
+                    <span class="checkbox metric">
+                      <input class="checkbox-element" name="addLikesMetric" value="M" type="checkbox" onclick="toggleStats()"/>
+                      <p>M</p>
+                    </span>
                   </div>
                 </div>
               </div>
               <!--- Date and Time --->
               <div class="form-group">
-                <label for="inputName">Date of Post</label>
+                <label for="inputDate">Date of Post</label>
                 <input class="form-control" type="datetime-local" id="inputDate">
               </div>
               <!--- Hide Reply Count --->
               <div class="form-group">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="hideReplies">
-                  <label class="form-check-label" for="hideReplies">Hide replies</label>
+                  <input class="form-check-input" type="checkbox" id="hideComments" onclick="hideComments()">
+                  <label class="form-check-label" for="hideComments">Hide replies</label>
                 </div>
               </div>
               <!--- Number of Replies --->
-              <div class="form-group">
-                <label for="inputName">Number of Replies</label>
-                <input class="form-control" type="number" id="inputReplyCt">
+              <div class="form-group collapse show" aria-expanded="false" id="commentsBox">
+                <label for="inputComments">Number of Replies</label>
+                <div class="form-row">
+                  <div class="col-auto">
+                    <input class="form-control" type="number" min="0" id="inputComments">
+                  </div>
+                  <div class="col-auto">
+                    <span class="checkbox metric">
+                      <input class="checkbox-element" name="addCommentsMetric" value="K" type="checkbox" onclick="toggleStats()"/>
+                      <p>K</p>
+                    </span>
+                    <span class="checkbox metric">
+                      <input class="checkbox-element" name="addCommentsMetric" value="M" type="checkbox" onclick="toggleStats()"/>
+                      <p>M</p>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -240,7 +284,7 @@
         ---></div>
             <div class="twText">met a really nice guy out in Area 11 and he has a cat named Arthur!! <span>#instantcrush</span></div>
             <div class="twStats"><!---
-            --->❤ 1.2M<span class="twTime"> 6:06 PM - August 12, 2017</span></div>
+            ---><span class="twLikes">❤ 1.2M</span><span class="twTime"> 6:06 PM - August 12, 2017</span></div>
             <div class="twComments ">32.2K people are talking about this</div>
         </div>
       </div>
@@ -253,12 +297,12 @@
       <!--- Button to generate code --->
       <div class="genCode0">
         <p>
-          <button class="btn btn-primary bg-dark" type="button" onclick="generateCode()" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="HTMLBox CSSBox">
+          <button class="btn btn-primary bg-dark" type="button" onclick="generateCode()" data-toggle="collapse" data-target=".genCode" aria-expanded="false" aria-controls="HTMLBox CSSBox">
             Generate HTML
           </button>
         </p>
         <!--- Appears only when code needs to be generated --->
-        <div class="collapse multi-collapse genCode">
+        <div class="collapse genCode" aria-expanded="false">
           <button class="btn btn-primary btn-sm d-block bg-dark" type="button" data-clipboard-target="#HTMLCode">Copy to your fic</button>
           <textarea readonly class="d-block my-2 copyable" id="HTMLCode">Dummy Text</textarea>
         </div>
@@ -272,5 +316,6 @@
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/prototype2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="js/purify.min.js"></script>
   </body>
 </html>

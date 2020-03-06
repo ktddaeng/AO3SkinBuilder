@@ -42,6 +42,36 @@ h3.dummyHeader { font-size: 20px; }
   padding-right: 0.5em;
 }
 
+/*Icon Checkbox*/
+.checkbox{
+  background: transparent;
+  display:inline-block;
+  padding: 10px 10px 5px 10px;
+  margin-right: 0.3em;
+  border-radius: 5px;
+  position:relative;
+  cursor:pointer;
+  /* border: 0.05em solid #fff; */
+}
+.checkbox.metric { width: 35px; height: 35px; padding-top: 5px; margin-left: 0.3em; text-align: center;}
+.metric p { margin: 0; padding: 0;}
+.checkbox-element{
+  display:block;
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:99999;
+  opacity:0;
+}
+/* .checkbox>input[type='checkbox']+*{
+  color:#fff;
+}
+.checkbox>input[type='checkbox']:checked+*{
+  color:#582630;
+} */
+
 /*
 a, a:hover, a:focus {
     color: inherit;
@@ -104,15 +134,12 @@ ul ul a {
   transition: 0.5s;
   -ms-overflow-style: none;
 }
-
 .sidenav::-webkit-scrollbar {
   display: none;
 }
-
 .sidenav button:hover {
   color: #ff0000;
 }
-
 .sidenav .closebtn {
   padding-top: 0.5em;
   text-decoration: none;
@@ -122,14 +149,12 @@ ul ul a {
   font-size: 36px;
   transition: 0.3s;
 }
-
 #main {
   transition: margin-left .5s;
 }
-
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
-  .sidenave a {font-size: 18px;}
+  .sidenav a {font-size: 18px;}
 }
 
 /*Accordion*/
@@ -145,7 +170,15 @@ ul ul a {
   background: #990000;
 }
 #settingAccordion .card-body {
+  width: 350px;
   color: #fff;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 700px) {
+  #settingAccordion .card-body {
+    width: 100vw;
+    overflow-x: hidden;
+  }
 }
 #settingAccordion .card-body .form-group:last-child {
   margin-bottom: 0;
