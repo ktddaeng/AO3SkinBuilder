@@ -85,12 +85,12 @@
               <!--- Avatar --->
               <div class="form-group">
                 <label for="inputAvatar">Avatar URL</label>
-                <input class="form-control" type="url" id="inputAvatar" oninput="buildAvatar()">
+                <input class="form-control" type="url" id="inputAvatar" placeholder="Paste URL here" oninput="buildAvatar()">
               </div>
               <!--- Username and Handle--->
               <div class="form-group">
                 <label for="inputName">Twitter Name</label>
-                <input class="form-control" type="text" id="inputName" maxlength="35" value="twitter name" oninput="buildName()">
+                <input class="form-control" type="text" id="inputName" maxlength="35" placeholder="twitter name" oninput="buildName()">
               </div>
               <div class="form-group">
                 <label for="inputHandle">Twitter Handle</label>
@@ -98,7 +98,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                   </div>
-                  <input type="text" class="form-control" id="inputHandle" maxlength="15" value="twitterhandle" oninput="buildHandle()">
+                  <input type="text" class="form-control" id="inputHandle" maxlength="15" placeholder="twitterhandle" oninput="buildHandle()">
                 </div>
               </div>
               <!--- Verified Icon --->
@@ -132,12 +132,16 @@
               <!--- Replying Tag --->
               <div class="form-group collapse" aria-expanded="false" id="addReply">
                 <label for="inputReplyHandle">Handle being replied to</label>
-                <input class="form-control" type="text" id="inputReplyHandle" value="replyhandle" maxlength="15" oninput="buildReply()">
+                <input class="form-control" type="text" id="inputReplyHandle" placeholder="replyhandle" maxlength="15" oninput="buildReply()">
               </div>
               <!--- Text --->
               <div class="form-group">
-                <label for="inputTweet">Text</label>
-                <textarea class="form-control" type="text" id="inputText" maxlength="280"></textarea>
+                <label for="inputText">Text</label>
+                <textarea class="form-control" type="text" id="inputText" maxlength="280" placeholder="Text here..."></textarea>
+                <div id="charCount">
+                  <span id="current">0</span>
+                  <span id="maximum">/ 280</span>
+                </div>
               </div>
               <!--- Icon tray to add picture/poll/quote retweet --->
               <div class="form-group">
@@ -159,21 +163,118 @@
               </div>
 
               <!--- Add Picture URL --->
-              <div class="collapse" aria-expanded="false" id="addPhoto">
+              <div class="collapse mediaBox" aria-expanded="false" id="addPhoto">
                 <label for="inputImage">Image URL</label>
-                <input class="form-control" type="text" id="inputImage">
+                <input class="form-control" type="text" id="inputImage" oninput="buildPhoto()">
               </div>
 
               <!--- Add Quote Retweet --->
-              <div class="collapse" aria-expanded="false" id="addQuote">
-                <label for="inputSubAvatar">Quoted Avatar URL</label>
-                <input class="form-control" type="text" id="inputSubAvatar">
+              <div class="collapse mediaBox" aria-expanded="false" id="addQuote">
+                <!--- Embedded Avatar --->
+                <div class="form-group">
+                  <label for="inputAvatarEmbed">Quoted Avatar URL</label>
+                  <input class="form-control" type="text" id="inputAvatarEmbed" oninput="buildAvatarEmbed()">
+                </div>
+                <!--- Umbedded Username and Handle--->
+                <div class="form-group">
+                  <label for="inputNameEmbed">Quoted Twitter Name</label>
+                  <input class="form-control" type="text" id="inputNameEmbed" maxlength="35" placeholder="embedded twitter name" oninput="buildNameEmbed()">
+                </div>
+                <div class="form-group">
+                  <label for="inputHandleEmbed">Quoted Twitter Handle</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">@</div>
+                    </div>
+                    <input type="text" class="form-control" id="inputHandleEmbed" maxlength="15" placeholder="embedhandle" oninput="buildHandleEmbed()">
+                  </div>
+                </div>
+                <!--- Embedded Verified Icon --->
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inputVerifiedEmbed" onclick="addVerifiedEmbed()" checked>
+                    <label class="form-check-label" for="inputVerifiedEmbed">Quoted Verified Account</label>
+                  </div>
+                </div>
+                <!--- Embedded Text --->
+                <div class="form-group">
+                  <label for="inputTextEmbed">Quoted Text</label>
+                  <textarea class="form-control" type="text" id="inputTextEmbed" maxlength="280" placeholder="Embedded text here..."></textarea>
+                  <div id="charCount2">
+                    <span id="currentEmbed">0</span>
+                    <span id="maximumEmbed">/ 280</span>
+                  </div>
+                </div>
+                <!--- Show Embedded Photo --->
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="showPhotoEmbed" onclick="addPhotoEmbed()">
+                    <label class="form-check-label" for="showPhotoEmbed">Add image</label>
+                  </div>
+                </div>
+                <!--- Embedded Photo --->
+                <div class="form-group collapse" aria-expanded="false" id="addPhotoEmbed">
+                  <label for="inputPhotoEmbed">Embedded Image URL</label>
+                  <input class="form-control" type="text" id="inputPhotoEmbed" oninput="buildPhotoEmbed()">
+                </div>
               </div>
 
               <!--- Add Poll --->
-              <div class="collapse" aria-expanded="false" id="addPoll">
-                <label for="inputSubAvatar">pol URL</label>
-                <input class="form-control" type="text" id="inputSubAvatar">
+              <div class="collapse mediaBox" aria-expanded="false" id="addPoll">
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="isActivePoll" onclick="buildActivePoll()">
+                    <label class="form-check-label" for="isActivePoll">Is the poll ongoing?</label>
+                  </div>
+                </div>
+                <div class="form-group collapse" aria-expanded="false" id="addPollTime">
+                  <div class="form-row" id="inputPollTime">
+                    <div class="col">
+                      <label for="inputPollDays">Days Left</label>
+                      <input class="form-control" type="number" id="inputPollDays" oninput="buildPollTime()">
+                    </div>
+                    <div class="col">
+                      <label for="inputPollDays">Hours Left</label>
+                      <input class="form-control" type="number" id="inputPollHours" oninput="buildPollTime()">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-row">
+                    <div class="col-8">
+                      <label for="addPoll1">Options Text</label>
+                      <input type="text" class="form-control" id="addPoll1" maxlength="25" placeholder="Option 1" oninput="buildPollOptions()">
+                    </div>
+                    <div class="col">
+                      <label for="addPoll1">Vote Count</label>
+                      <input type="number" class="form-control" id="addVote1" placeholder="0" min="0" oninput="buildPollOptions()">
+                    </div>
+                  </div>
+                  <div class="form-row mt-2">
+                    <div class="col-8">
+                      <input type="text" class="form-control" id="addPoll2" maxlength="25" placeholder="Option 2" oninput="buildPollOptions()">
+                    </div>
+                    <div class="col">
+                      <input type="number" class="form-control" id="addVote2" placeholder="0" min="0" oninput="buildPollOptions()">
+                    </div>
+                  </div>
+                  <div class="form-row mt-2">
+                    <div class="col-8">
+                      <input type="text" class="form-control" id="addPoll3" maxlength="25" placeholder="Option 3" oninput="buildPollOptions()">
+                    </div>
+                    <div class="col">
+                      <input type="number" class="form-control" id="addVote3" placeholder="0" min="0" oninput="buildPollOptions()">
+                    </div>
+                  </div>
+                  <div class="form-row mt-2">
+                    <div class="col-8">
+                      <input type="text" class="form-control" id="addPoll4" maxlength="25" placeholder="Option 4" oninput="buildPollOptions()">
+                    </div>
+                    <div class="col">
+                      <input type="number" class="form-control" id="addVote4" placeholder="0" min="0" oninput="buildPollOptions()">
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -192,7 +293,7 @@
               <!--- Hide Footer --->
               <div class="form-group">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="hideFooter">
+                  <input class="form-check-input" type="checkbox" id="hideFooter" onclick="hideFooter()">
                   <label class="form-check-label" for="hideFooter">Hide footer</label>
                 </div>
               </div>
@@ -201,7 +302,7 @@
                 <label for="inputLikesCt">Number of Likes</label>
                 <div class="form-row">
                   <div class="col-auto">
-                    <input class="form-control" type="number" min="0" id="inputLikesCt">
+                    <input class="form-control" type="number" min="0" id="inputLikesCt" oninput="buildLikes()">
                   </div>
                   <div class="col-auto">
                     <span class="checkbox metric">
@@ -218,7 +319,7 @@
               <!--- Date and Time --->
               <div class="form-group">
                 <label for="inputDate">Date of Post</label>
-                <input class="form-control" type="datetime-local" id="inputDate">
+                <input class="form-control" type="datetime-local" id="inputDate" oninput="buildTime()">
               </div>
               <!--- Hide Reply Count --->
               <div class="form-group">
@@ -232,7 +333,7 @@
                 <label for="inputComments">Number of Replies</label>
                 <div class="form-row">
                   <div class="col-auto">
-                    <input class="form-control" type="number" min="0" id="inputComments">
+                    <input class="form-control" type="number" min="0" id="inputComments" oninput="buildComments()">
                   </div>
                   <div class="col-auto">
                     <span class="checkbox metric">
@@ -282,8 +383,7 @@
             ---><span><span class="twName">Euphy</span><span class="twVerified">✔</span><br/><!---
             ---><span class="twHandle">@officialeuphemia</span></span><!---
         ---></div>
-            <div class="twText">met a really nice guy out in Area 11 and he has a cat named Arthur!! <span>#instantcrush</span></div>
-            <div class="twStats"><!---
+            <div class="twText">met a really nice guy out in Area 11 and he has a cat named Arthur!! <span>#instantcrush</span></div><div class="twStats"><!---
             ---><span class="twLikes">❤ 1.2M</span><span class="twTime"> 6:06 PM - August 12, 2017</span></div>
             <div class="twComments ">32.2K people are talking about this</div>
         </div>

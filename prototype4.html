@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/prototype4.css">
+    <link rel="stylesheet" href="css/Twitter2020.css">
   </head>
   <body>
     <!-- <button type="button" id="formButton">Toggle Form!</button>
@@ -47,25 +48,36 @@
       </span>
     </div>
 
+    <div class="twText" id="text1">
+      The #quick brown fox jumped over the lazy #dog. Lazy as #heck
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-      $("#formButton").click(function(){
-        $("#form1").toggle();
-      });
+      // $("#formButton").click(function(){
+      //   $("#form1").toggle();
+      // });
+      //
+      // /*changes color of parent span when checkbox selected*/
+      // $('.addMedia').click(function() {
+      //     $('.addMedia').not(this).prop('checked', false);
+      //     $('.addMedia').not(this).parent().css("background", "transparent");
+      //     if ($(this).is(':checked')){
+      //       $(this).parent().css("background","#2f8cab");
+      //     } else {
+      //       $(this).parent().css("background","transparent");
+      //     }
+      // });
 
-      /*changes color of parent span when checkbox selected*/
-      $('.addMedia').click(function() {
-          $('.addMedia').not(this).prop('checked', false);
-          $('.addMedia').not(this).parent().css("background", "transparent");
-          if ($(this).is(':checked')){
-            $(this).parent().css("background","#2f8cab");
-          } else {
-            $(this).parent().css("background","transparent");
-          }
-      });
+      var oldText = $("#text1").text();
+      console.log("old: " + oldText);
+      var newText = oldText.replace(/#(\w+)/ig, "<span>#$1</span>");
+      console.log("new: " + newText);
+      $("#text1").html(newText);
+
     </script>
   </body>
 </html>
