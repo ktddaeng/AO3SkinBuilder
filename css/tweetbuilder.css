@@ -42,6 +42,16 @@ h3.dummyHeader { font-size: 20px; }
   padding-right: 0.5em;
 }
 
+a {
+  text-decoration: none;
+  transition: color 0.5s;
+  color: #A55858;
+}
+a:hover {
+  text-decoration: none;
+  color: #BA0000;
+}
+
 /*Icon Checkbox*/
 .checkbox{
   background: transparent;
@@ -119,6 +129,7 @@ ul ul a {
     padding-left: 30px !important;
     background: #6d7fcc;
 } */
+
 
 /*Side navigation*/
 .sidenav {

@@ -1,6 +1,7 @@
 //Enables Tooltips
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="popover"]').popover('show');
 })
 
 //Enables copy to clipboard
@@ -39,9 +40,10 @@ function validateURLInput(inputID, validity){
   }
 }
 //fix image into img elements
-function buildImage(elementID, targetClass) {
+function buildImage(elementID, targetClass, altID) {
     hideCode();
     var newURL = DOMPurify.sanitize(document.getElementById(elementID).value);
+    var altText = DOMPurify.sanitize(document.getElementById(altID).value);
 
     checkImageURL(newURL, function(imageExists){
       if (imageExists == false) {
@@ -51,6 +53,12 @@ function buildImage(elementID, targetClass) {
       } else {
         $(targetClass).attr("src", newURL);
         validateURLInput(elementID, true);
+      }
+      //apply alternate ID if applicable
+      if (altText.length == 0) {
+        $(targetClass).attr("alt", "Image inserted here");
+      } else {
+        $(targetClass).attr("alt", altText);
       }
     });
 }
@@ -86,6 +94,7 @@ function checkboxShade(elementName) {
 /* Collapses code generators if anything has been change in inputs*/
 function hideCode(){
   $('.genCode').collapse('hide');
+  $('[data-toggle="popover"]').popover('hide');
 }
 /*Generate HTML Code*/
 function generateCode(){
@@ -215,7 +224,7 @@ function addVerified(){
 //builder functions for header
 function buildAvatar(){
   hideCode();
-  buildImage("inputAvatar", ".twAvatar");
+  buildImage("inputAvatar", ".twAvatar", "inputAltAvatar");
 }
 function buildName(){
   hideCode();
@@ -275,7 +284,7 @@ $("#addReply").on("hidden.bs.collapse", function(){
 function buildReply(){
   hideCode();
   var newText = DOMPurify.sanitize(document.getElementById("inputReplyHandle").value);
-  $(".twReply span:last-child").text(newText);
+  $(".twReply span:last-child").text("@" + newText);
 }
 
 /*inputting Text into Text Area*/
@@ -368,7 +377,7 @@ function addPhoto(){
 }
 function buildPhoto() {
   hideCode();
-  buildImage("inputImage", ".twImage");
+  buildImage("inputImage", ".twImage", "inputAltImage");
 }
 
 //handlers for adding quoted tweets
@@ -391,7 +400,7 @@ function addQuote(){
 }
 function buildAvatarEmbed(){
   hideCode();
-  buildImage("inputAvatarEmbed", ".twAvatarEmbed");
+  buildImage("inputAvatarEmbed", ".twAvatarEmbed", "inputAltAvatarEmbed");
 }
 function buildNameEmbed(){
   hideCode();
@@ -452,7 +461,7 @@ function addPhotoEmbed(){
 }
 function buildPhotoEmbed(){
   hideCode();
-  buildImage("inputPhotoEmbed", ".twImageEmbed");
+  buildImage("inputPhotoEmbed", ".twImageEmbed", "inputAltPhotoEmbed");
 }
 //critcal region for addPhotoEmbed, disable all buttons when transition begins
 $("#addPhotoEmbed").on("show.bs.collapse", function(){
