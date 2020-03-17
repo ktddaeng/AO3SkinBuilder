@@ -1,6 +1,7 @@
 # AO3 Tweet Builder
 
 ![Image of Tweet Builder interface](/images/interface1.png)
+<img src="/images/interface1.png"/>
 
 A user friendly interface to help AO3 writers create fake social media posts using
 work skins and some extra HTML. Its companion Tweet work skin was made to
@@ -8,6 +9,7 @@ help writers mimic social media experiences in their stories or preserve
 fanfiction written on Twitter. No coding necessary.
 
 ![Image of a sample Tweet with poll](/images/wip1.png "A sample Tweet with a Poll"){width:400px}
+<img src="images/wip1.png" width="300"/>
 
 By entering into a form, users can easily build HTML code that mimics social
 media posts from Twitter, including embedded images, quoted tweets, and even polls.
