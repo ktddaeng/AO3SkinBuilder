@@ -7,12 +7,12 @@ work skins and some extra HTML. Its companion Tweet work skin was made to
 help writers mimic social media experiences in their stories or preserve
 fanfiction written on Twitter. No coding necessary.
 
-![Image of a sample Tweet with poll](/images/wip1.png "A sample Tweet with a Poll" | width=400)
+![Image of a sample Tweet with poll](/images/wip1.png "A sample Tweet with a Poll"){width:400px}
 
 By entering into a form, users can easily build HTML code that mimics social
 media posts from Twitter, including embedded images, quoted tweets, and even polls.
 
-![Image of a sample quoted Tweet](/images/wip2.png "A sample quoted Tweet" | width=400)
+![Image of a sample quoted Tweet](/images/wip2.png "A sample quoted Tweet"){width:400px;}
 
 ## Getting Started
 
