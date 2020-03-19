@@ -33,15 +33,15 @@ user's work. Images must be hosted elsewhere and ready to be linked.
 * [DOMPurify.js](https://github.com/cure53/DOMPurify) - Used to sanitize user inputs
 * [Material Design Icons](https://material.io/resources/icons/?style=baseline) - Icons provided by Google
 
-<!-- ## Contributing
+## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
+<!-- ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). -->
 
-## Authors
+## Authors & Contributors
 
 * **Kim Dang** - *Initial work* - [ktddaeng](https://github.com/ktddaeng)
 
